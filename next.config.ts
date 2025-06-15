@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // Temporarily disable static export for Vercel troubleshooting
+  // output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true,
