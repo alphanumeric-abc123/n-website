@@ -1,0 +1,39 @@
+{
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx"
+  ],
+  "exclude": [
+    "**/*.config.*",
+    "**/*.d.ts",
+    "**/node_modules/**",
+    "**/coverage/**",
+    "**/test-results/**",
+    "**/tests/**",
+    "**/playwright-report/**",
+    "**/.next/**",
+    "**/out/**",
+    "**/build/**",
+    "**/dist/**",
+    "**/*.test.*",
+    "**/*.spec.*",
+    "playwright.config.ts",
+    "next.config.ts",
+    "tailwind.config.ts",
+    "postcss.config.mjs",
+    "eslint.config.mjs"
+  ],
+  "reporter": [
+    "text",
+    "html",
+    "lcov"
+  ],
+  "all": true,
+  "check-coverage": true,
+  "statements": 100,
+  "branches": 100,
+  "functions": 100,
+  "lines": 100
+}

@@ -1,0 +1,971 @@
+{
+  "contentTypes": [
+    {
+      "sys": {
+        "id": "homePage"
+      },
+      "name": "Home Page",
+      "description": "Homepage content model for Navi.com",
+      "displayField": "title",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "id": "heroHeadline",
+          "name": "Hero Headline",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "heroSubtext",
+          "name": "Hero Subtext",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "heroImage",
+          "name": "Hero Image",
+          "type": "Link",
+          "linkType": "Asset",
+          "required": true
+        },
+        {
+          "id": "heroCtaText",
+          "name": "Hero CTA Text",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "max": 50
+              }
+            }
+          ]
+        },
+        {
+          "id": "heroCtaLink",
+          "name": "Hero CTA Link",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "productOverview",
+          "name": "Product Overview",
+          "type": "Array",
+          "items": {
+            "type": "Link",
+            "linkType": "Entry",
+            "validations": [
+              {
+                "linkContentType": ["featureCard"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "trustIndicators",
+          "name": "Trust Indicators",
+          "type": "Array",
+          "items": {
+            "type": "Link",
+            "linkType": "Entry",
+            "validations": [
+              {
+                "linkContentType": ["trustIndicator"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "ctaSection",
+          "name": "CTA Section",
+          "type": "Link",
+          "linkType": "Entry",
+          "validations": [
+            {
+              "linkContentType": ["ctaSection"]
+            }
+          ]
+        },
+        {
+          "id": "seoTitle",
+          "name": "SEO Title",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "max": 60
+              }
+            }
+          ]
+        },
+        {
+          "id": "seoDescription",
+          "name": "SEO Description",
+          "type": "Text",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "max": 160
+              }
+            }
+          ]
+        },
+        {
+          "id": "seoKeywords",
+          "name": "SEO Keywords",
+          "type": "Symbol",
+          "validations": [
+            {
+              "size": {
+                "max": 255
+              }
+            }
+          ]
+        },
+        {
+          "id": "publishedAt",
+          "name": "Published At",
+          "type": "Date",
+          "required": true
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "productPage"
+      },
+      "name": "Product Page",
+      "description": "Product page content model for UPI, Loans, Insurance, Mutual Funds",
+      "displayField": "title",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "slug",
+          "name": "Slug",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            },
+            {
+              "regexp": {
+                "pattern": "^[a-z0-9-]+$"
+              }
+            }
+          ]
+        },
+        {
+          "id": "productType",
+          "name": "Product Type",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "in": ["upi", "cash-loan", "home-loan", "health-insurance", "mutual-funds"]
+            }
+          ]
+        },
+        {
+          "id": "heroSection",
+          "name": "Hero Section",
+          "type": "Link",
+          "linkType": "Entry",
+          "validations": [
+            {
+              "linkContentType": ["heroSection"]
+            }
+          ]
+        },
+        {
+          "id": "productDescription",
+          "name": "Product Description",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "keyFeatures",
+          "name": "Key Features",
+          "type": "Array",
+          "items": {
+            "type": "Link",
+            "linkType": "Entry",
+            "validations": [
+              {
+                "linkContentType": ["featureCard"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "eligibilityCriteria",
+          "name": "Eligibility Criteria",
+          "type": "Object"
+        },
+        {
+          "id": "interestRates",
+          "name": "Interest Rates",
+          "type": "Object"
+        },
+        {
+          "id": "loanAmounts",
+          "name": "Loan Amounts",
+          "type": "Object"
+        },
+        {
+          "id": "tenureOptions",
+          "name": "Tenure Options",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "calculator",
+          "name": "Calculator",
+          "type": "Link",
+          "linkType": "Entry",
+          "validations": [
+            {
+              "linkContentType": ["calculator"]
+            }
+          ]
+        },
+        {
+          "id": "applicationProcess",
+          "name": "Application Process",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "documentsRequired",
+          "name": "Documents Required",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "faqs",
+          "name": "FAQs",
+          "type": "Array",
+          "items": {
+            "type": "Link",
+            "linkType": "Entry",
+            "validations": [
+              {
+                "linkContentType": ["faq"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "relatedProducts",
+          "name": "Related Products",
+          "type": "Array",
+          "items": {
+            "type": "Link",
+            "linkType": "Entry",
+            "validations": [
+              {
+                "linkContentType": ["productPage"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "seoTitle",
+          "name": "SEO Title",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "max": 60
+              }
+            }
+          ]
+        },
+        {
+          "id": "seoDescription",
+          "name": "SEO Description",
+          "type": "Text",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "max": 160
+              }
+            }
+          ]
+        },
+        {
+          "id": "seoKeywords",
+          "name": "SEO Keywords",
+          "type": "Symbol"
+        },
+        {
+          "id": "publishedAt",
+          "name": "Published At",
+          "type": "Date",
+          "required": true
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "corporatePage"
+      },
+      "name": "Corporate Page",
+      "description": "Corporate page content model for About Us, Careers, Governance",
+      "displayField": "title",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "slug",
+          "name": "Slug",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ]
+        },
+        {
+          "id": "pageType",
+          "name": "Page Type",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "in": ["about-us", "why-navi", "careers", "governance"]
+            }
+          ]
+        },
+        {
+          "id": "heroSection",
+          "name": "Hero Section",
+          "type": "Link",
+          "linkType": "Entry",
+          "validations": [
+            {
+              "linkContentType": ["heroSection"]
+            }
+          ]
+        },
+        {
+          "id": "content",
+          "name": "Content",
+          "type": "RichText",
+          "required": true
+        },
+        {
+          "id": "sections",
+          "name": "Sections",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "teamMembers",
+          "name": "Team Members",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "companyStats",
+          "name": "Company Stats",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "timeline",
+          "name": "Timeline",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "seoTitle",
+          "name": "SEO Title",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "seoDescription",
+          "name": "SEO Description",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "seoKeywords",
+          "name": "SEO Keywords",
+          "type": "Symbol"
+        },
+        {
+          "id": "publishedAt",
+          "name": "Published At",
+          "type": "Date",
+          "required": true
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "resourcePage"
+      },
+      "name": "Resource Page",
+      "description": "Resource page content model for Calculators, Guides, Tools",
+      "displayField": "title",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "slug",
+          "name": "Slug",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ]
+        },
+        {
+          "id": "resourceType",
+          "name": "Resource Type",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "in": ["calculators", "guides", "tools"]
+            }
+          ]
+        },
+        {
+          "id": "description",
+          "name": "Description",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "resources",
+          "name": "Resources",
+          "type": "Array",
+          "items": {
+            "type": "Link",
+            "linkType": "Entry"
+          }
+        },
+        {
+          "id": "categories",
+          "name": "Categories",
+          "type": "Array",
+          "items": {
+            "type": "Symbol"
+          }
+        },
+        {
+          "id": "seoTitle",
+          "name": "SEO Title",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "seoDescription",
+          "name": "SEO Description",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "seoKeywords",
+          "name": "SEO Keywords",
+          "type": "Symbol"
+        },
+        {
+          "id": "publishedAt",
+          "name": "Published At",
+          "type": "Date",
+          "required": true
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "calculator"
+      },
+      "name": "Calculator",
+      "description": "Calculator content model for EMI, Premium, Investment calculators",
+      "displayField": "title",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "slug",
+          "name": "Slug",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ]
+        },
+        {
+          "id": "calculatorType",
+          "name": "Calculator Type",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "in": ["loan-emi", "insurance-premium", "investment-returns", "tax-savings"]
+            }
+          ]
+        },
+        {
+          "id": "description",
+          "name": "Description",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "inputFields",
+          "name": "Input Fields",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "formula",
+          "name": "Formula",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "disclaimer",
+          "name": "Disclaimer",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "relatedProducts",
+          "name": "Related Products",
+          "type": "Array",
+          "items": {
+            "type": "Link",
+            "linkType": "Entry",
+            "validations": [
+              {
+                "linkContentType": ["productPage"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "seoTitle",
+          "name": "SEO Title",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "seoDescription",
+          "name": "SEO Description",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "publishedAt",
+          "name": "Published At",
+          "type": "Date",
+          "required": true
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "heroSection"
+      },
+      "name": "Hero Section",
+      "description": "Reusable hero section component",
+      "displayField": "headline",
+      "fields": [
+        {
+          "id": "headline",
+          "name": "Headline",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "subtext",
+          "name": "Subtext",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "backgroundImage",
+          "name": "Background Image",
+          "type": "Link",
+          "linkType": "Asset",
+          "required": true
+        },
+        {
+          "id": "ctaText",
+          "name": "CTA Text",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "ctaLink",
+          "name": "CTA Link",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "ctaType",
+          "name": "CTA Type",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "in": ["primary", "secondary"]
+            }
+          ]
+        },
+        {
+          "id": "alignment",
+          "name": "Alignment",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "in": ["left", "center", "right"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "featureCard"
+      },
+      "name": "Feature Card",
+      "description": "Reusable feature card component",
+      "displayField": "title",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "description",
+          "name": "Description",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "icon",
+          "name": "Icon",
+          "type": "Link",
+          "linkType": "Asset",
+          "required": true
+        },
+        {
+          "id": "link",
+          "name": "Link",
+          "type": "Symbol"
+        },
+        {
+          "id": "linkText",
+          "name": "Link Text",
+          "type": "Symbol"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "faq"
+      },
+      "name": "FAQ",
+      "description": "Frequently Asked Questions component",
+      "displayField": "question",
+      "fields": [
+        {
+          "id": "question",
+          "name": "Question",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "answer",
+          "name": "Answer",
+          "type": "RichText",
+          "required": true
+        },
+        {
+          "id": "category",
+          "name": "Category",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "order",
+          "name": "Order",
+          "type": "Integer",
+          "required": true
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "ctaSection"
+      },
+      "name": "CTA Section",
+      "description": "Call-to-action section component",
+      "displayField": "headline",
+      "fields": [
+        {
+          "id": "headline",
+          "name": "Headline",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "description",
+          "name": "Description",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "primaryCtaText",
+          "name": "Primary CTA Text",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "primaryCtaLink",
+          "name": "Primary CTA Link",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "secondaryCtaText",
+          "name": "Secondary CTA Text",
+          "type": "Symbol"
+        },
+        {
+          "id": "secondaryCtaLink",
+          "name": "Secondary CTA Link",
+          "type": "Symbol"
+        },
+        {
+          "id": "backgroundImage",
+          "name": "Background Image",
+          "type": "Link",
+          "linkType": "Asset"
+        },
+        {
+          "id": "backgroundColor",
+          "name": "Background Color",
+          "type": "Symbol"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "trustIndicator"
+      },
+      "name": "Trust Indicator",
+      "description": "Trust indicator component for homepage",
+      "displayField": "metric",
+      "fields": [
+        {
+          "id": "metric",
+          "name": "Metric",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "value",
+          "name": "Value",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "description",
+          "name": "Description",
+          "type": "Text",
+          "required": true
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "siteNavigation"
+      },
+      "name": "Site Navigation",
+      "description": "Global site navigation configuration",
+      "displayField": "title",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "required": true,
+          "defaultValue": {
+            "en-US": "Main Navigation"
+          }
+        },
+        {
+          "id": "mainNavigation",
+          "name": "Main Navigation",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "footerNavigation",
+          "name": "Footer Navigation",
+          "type": "Object"
+        },
+        {
+          "id": "utilityNavigation",
+          "name": "Utility Navigation",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "socialLinks",
+          "name": "Social Links",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "legalLinks",
+          "name": "Legal Links",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "siteSettings"
+      },
+      "name": "Site Settings",
+      "description": "Global site settings and configuration",
+      "displayField": "siteName",
+      "fields": [
+        {
+          "id": "siteName",
+          "name": "Site Name",
+          "type": "Symbol",
+          "required": true,
+          "defaultValue": {
+            "en-US": "Navi"
+          }
+        },
+        {
+          "id": "siteDescription",
+          "name": "Site Description",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "defaultSeoTitle",
+          "name": "Default SEO Title",
+          "type": "Symbol",
+          "required": true
+        },
+        {
+          "id": "defaultSeoDescription",
+          "name": "Default SEO Description",
+          "type": "Text",
+          "required": true
+        },
+        {
+          "id": "contactInfo",
+          "name": "Contact Info",
+          "type": "Object"
+        },
+        {
+          "id": "socialMediaLinks",
+          "name": "Social Media Links",
+          "type": "Array",
+          "items": {
+            "type": "Object"
+          }
+        },
+        {
+          "id": "analyticsConfig",
+          "name": "Analytics Config",
+          "type": "Object"
+        },
+        {
+          "id": "complianceInfo",
+          "name": "Compliance Info",
+          "type": "Object"
+        }
+      ]
+    }
+  ]
+}
