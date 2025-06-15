@@ -24,8 +24,8 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // Ensure proper static export configuration
-  distDir: '.next',
+  // Remove distDir to use default for static export
+  // Static export doesn't need custom distDir configuration
 };
 
 export default nextConfig;
