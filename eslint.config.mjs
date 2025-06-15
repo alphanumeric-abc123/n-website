@@ -23,11 +23,10 @@ const eslintConfig = [
       // TypeScript specific rules
       "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
       "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/prefer-const": "error",
       
       // General code quality rules
-      "prefer-const": "error",
       "no-var": "error",
+      "prefer-const": "error",
       "no-console": ["warn", { "allow": ["warn", "error"] }],
       "no-debugger": "error",
       

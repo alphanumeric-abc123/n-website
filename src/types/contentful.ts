@@ -322,6 +322,7 @@ export interface CTASection {
   secondaryCtaText?: string;
   secondaryCtaLink?: string;
   backgroundImage?: ContentfulAsset;
+  backgroundColor?: string;
 }
 
 export interface HeroSection {

@@ -9,10 +9,7 @@ import {
   getHomePage, 
   getProductPages, 
   getCorporatePages, 
-  getResourcePages,
-  getCalculators,
   getSiteNavigation,
-  getSiteSettings,
   transformHomePage,
   transformProductPage,
   transformCorporatePage
@@ -271,18 +268,16 @@ export interface ContentAuditResult {
 
 export async function auditExistingContent(): Promise<ContentAuditResult> {
   try {
-    const [homePage, productPages, corporatePages, resourcePages] = await Promise.all([
+    const [homePage, productPages, corporatePages] = await Promise.all([
       getHomePage(),
       getProductPages(),
-      getCorporatePages(),
-      getResourcePages()
+      getCorporatePages()
     ]);
 
     const contentTypes: Record<string, number> = {
       homePage: homePage ? 1 : 0,
       productPage: productPages.length,
-      corporatePage: corporatePages.length,
-      resourcePage: resourcePages.length
+      corporatePage: corporatePages.length
     };
 
     const totalPages = Object.values(contentTypes).reduce((sum, count) => sum + count, 0);
@@ -307,7 +302,7 @@ export async function auditExistingContent(): Promise<ContentAuditResult> {
 
     // Audit product pages
     const requiredProducts = ['upi', 'cash-loan', 'home-loan', 'health-insurance', 'mutual-funds'];
-    const existingProducts = productPages.map(p => p.fields.productType);
+    const existingProducts = productPages.map(p => p.fields.productType as string).filter(Boolean);
     const missingProducts = requiredProducts.filter(product => !existingProducts.includes(product));
     
     missingProducts.forEach(product => {
