@@ -1,0 +1,49 @@
+name: Build and Deploy to Netlify
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # Build and test job
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+        
+      - name: Run tests
+        run: npm test -- --coverage --watchAll=false
+        
+      - name: Build project
+        run: npm run build
+        
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-files
+          path: out/
+          
+  # Note: Netlify handles deployment automatically via GitHub integration
+  # This workflow ensures code quality and successful builds before deployment
+  notify-deployment:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment notification
+        run: |
+          echo "✅ Build successful! Netlify will automatically deploy from GitHub."
+          echo "🌐 Check your Netlify dashboard for deployment status."
+          echo "📱 Live site will be updated in 1-2 minutes."
