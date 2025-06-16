@@ -14,7 +14,11 @@ const customJestConfig = {
     '<rootDir>/src/**/*.test.{js,jsx,ts,tsx}'
   ],
   collectCoverageFrom: [
-    'src/lib/utils.ts',
+    'src/**/*.{js,jsx,ts,tsx}',
+    '!src/**/*.d.ts',
+    '!src/**/*.stories.{js,jsx,ts,tsx}',
+    '!src/**/*.test.{js,jsx,ts,tsx}',
+    '!src/**/index.{js,jsx,ts,tsx}',
   ],
   coverageReporters: ['text', 'lcov', 'html'],
   coverageDirectory: 'coverage-unit',

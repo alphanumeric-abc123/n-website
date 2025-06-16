@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -183,12 +183,12 @@
 <a name='L118'></a><a href='#L118'>118</a>
 <a name='L119'></a><a href='#L119'>119</a>
 <a name='L120'></a><a href='#L120'>120</a>
-<a name='L121'></a><a href='#L121'>121</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L121'></a><a href='#L121'>121</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -245,10 +245,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -300,15 +300,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from <span class="cstat-no" title="statement not covered" >'react';</span>
-import { cva, type VariantProps } from <span class="cstat-no" title="statement not covered" >'class-variance-authority';</span>
-import { cn } from <span class="cstat-no" title="statement not covered" >'@/lib/utils';</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
 &nbsp;
 // Grid variants using class-variance-authority
-const gridVariants = <span class="cstat-no" title="statement not covered" >cva(</span>
+const gridVariants = cva(
   'grid',
   {
     variants: {
@@ -356,7 +356,7 @@ export interface GridProps
 }
 &nbsp;
 const Grid = React.forwardRef&lt;HTMLDivElement, GridProps&gt;(
-  ({ className, cols, gap, align, justify, as: Component = <span class="branch-0 cbranch-no" title="branch not covered" >'div',</span> ...props }, ref) =&gt; (
+  ({ className, cols, gap, align, justify, as: Component = 'div', ...props }, ref) =&gt; (
     &lt;Component
       ref={ref}
       className={cn(gridVariants({ cols, gap, align, justify }), className)}
@@ -365,10 +365,10 @@ const Grid = React.forwardRef&lt;HTMLDivElement, GridProps&gt;(
   )
 );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >Grid.displayName = 'Grid';</span>
+Grid.displayName = 'Grid';
 &nbsp;
 // Grid Item component for more control
-const gridItemVariants = <span class="cstat-no" title="statement not covered" >cva(</span>
+const gridItemVariants = cva(
   '',
   {
     variants: {
@@ -411,7 +411,7 @@ export interface GridItemProps
 }
 &nbsp;
 const GridItem = React.forwardRef&lt;HTMLDivElement, GridItemProps&gt;(
-  ({ className, colSpan, rowSpan, as: Component = <span class="branch-0 cbranch-no" title="branch not covered" >'div',</span> ...props }, ref) =&gt; (
+  ({ className, colSpan, rowSpan, as: Component = 'div', ...props }, ref) =&gt; (
     &lt;Component
       ref={ref}
       className={cn(gridItemVariants({ colSpan, rowSpan }), className)}
@@ -420,9 +420,9 @@ const GridItem = React.forwardRef&lt;HTMLDivElement, GridItemProps&gt;(
   )
 );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >GridItem.displayName = 'GridItem';</span>
+GridItem.displayName = 'GridItem';
 &nbsp;
-export { <span class="cstat-no" title="statement not covered" >Grid,</span> <span class="cstat-no" title="statement not covered" >GridItem,</span> <span class="cstat-no" title="statement not covered" >gridVariants,</span> <span class="cstat-no" title="statement not covered" >gridItemVariants </span>};
+export { Grid, GridItem, gridVariants, gridItemVariants };
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -430,7 +430,7 @@ export { <span class="cstat-no" title="statement not covered" >Grid,</span> <spa
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-15T06:42:56.361Z
+                at 2025-06-15T16:24:32.953Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

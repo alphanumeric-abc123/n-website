@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Temporarily disable static export for Vercel troubleshooting
-  // output: 'export',
+  // Use standard Next.js deployment for Vercel (not static export)
   trailingSlash: true,
   images: {
     unoptimized: true,
@@ -25,8 +24,6 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // Remove distDir to use default for static export
-  // Static export doesn't need custom distDir configuration
 };
 
 export default nextConfig;

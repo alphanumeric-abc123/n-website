@@ -34,9 +34,35 @@ export interface ContentValidationResult {
   warnings: string[];
 }
 
+function isValidUrl(url: string): boolean {
+  // Allow relative paths (starting with /)
+  if (url.startsWith('/')) {
+    return true;
+  }
+  
+  // Check for valid absolute URLs
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export function validateHomePage(homePage: HomePage): ContentValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
+
+  // Type validation
+  if (homePage.title && typeof homePage.title !== 'string') {
+    errors.push('Title must be a string');
+  }
+  if (homePage.heroHeadline && typeof homePage.heroHeadline !== 'string') {
+    errors.push('Hero headline must be a string');
+  }
+  if (homePage.heroSubtext && typeof homePage.heroSubtext !== 'string') {
+    errors.push('Hero subtext must be a string');
+  }
 
   // Required field validation
   if (!homePage.title) errors.push('Title is required');
@@ -45,9 +71,14 @@ export function validateHomePage(homePage: HomePage): ContentValidationResult {
   if (!homePage.seoTitle) errors.push('SEO title is required');
   if (!homePage.seoDescription) errors.push('SEO description is required');
 
+  // URL validation
+  if (homePage.heroCtaLink && !isValidUrl(homePage.heroCtaLink)) {
+    errors.push('Hero CTA link must be a valid URL or path');
+  }
+
   // SEO validation
   if (homePage.seoTitle && homePage.seoTitle.length > 60) {
-    warnings.push('SEO title should be under 60 characters for optimal display');
+    warnings.push('Title should be under 60 characters for better SEO');
   }
   if (homePage.seoDescription && homePage.seoDescription.length > 160) {
     warnings.push('SEO description should be under 160 characters for optimal display');
@@ -99,6 +130,72 @@ export function validateProductPage(productPage: ProductPage): ContentValidation
   // SEO validation
   if (productPage.seoTitle && productPage.seoTitle.length > 60) {
     warnings.push('SEO title should be under 60 characters');
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+    warnings
+  };
+}
+
+export function validateCorporatePage(corporatePage: CorporatePage): ContentValidationResult {
+  const errors: string[] = [];
+  const warnings: string[] = [];
+
+  // Required field validation
+  if (!corporatePage.title) errors.push('Title is required');
+  if (!corporatePage.slug) errors.push('Slug is required');
+  if (!corporatePage.pageType) errors.push('Page type is required');
+  if (!corporatePage.seoTitle) errors.push('SEO title is required');
+  if (!corporatePage.seoDescription) errors.push('SEO description is required');
+
+  // Slug validation
+  if (corporatePage.slug && !/^[a-z0-9-]+$/.test(corporatePage.slug)) {
+    errors.push('Slug must contain only lowercase letters, numbers, and hyphens');
+  }
+
+  // Hero section validation
+  if (corporatePage.heroSection) {
+    if (!corporatePage.heroSection.headline) {
+      errors.push('Hero section headline is required');
+    }
+    if (!corporatePage.heroSection.subtext) {
+      errors.push('Hero section subtext is required');
+    }
+  }
+
+  // Content validation
+  if (!corporatePage.content) {
+    errors.push('Page content is required');
+  } else if (typeof corporatePage.content !== 'object' || Array.isArray(corporatePage.content)) {
+    errors.push('Content must be a valid RichTextContent object');
+  }
+
+  // Sections validation
+  if (corporatePage.sections && !Array.isArray(corporatePage.sections)) {
+    errors.push('Sections must be an array');
+  }
+
+  // SEO validation
+  if (corporatePage.seoTitle && corporatePage.seoTitle.length > 60) {
+    warnings.push('SEO title should be under 60 characters for optimal display');
+  }
+  if (corporatePage.seoDescription && corporatePage.seoDescription.length > 160) {
+    warnings.push('SEO description should be under 160 characters for optimal display');
+  }
+
+  // Page type specific validation
+  if (corporatePage.pageType === 'about-us') {
+    if (!corporatePage.heroSection) {
+      warnings.push('Hero section is recommended for About Us pages');
+    }
+  }
+
+  if (corporatePage.pageType === 'careers') {
+    if (!corporatePage.sections || corporatePage.sections.length === 0) {
+      warnings.push('Career pages should include sections for job listings or company culture');
+    }
   }
 
   return {
@@ -277,7 +374,8 @@ export async function auditExistingContent(): Promise<ContentAuditResult> {
     const contentTypes: Record<string, number> = {
       homePage: homePage ? 1 : 0,
       productPage: productPages.length,
-      corporatePage: corporatePages.length
+      corporatePage: corporatePages.length,
+      resourcePage: 0
     };
 
     const totalPages = Object.values(contentTypes).reduce((sum, count) => sum + count, 0);
@@ -302,7 +400,7 @@ export async function auditExistingContent(): Promise<ContentAuditResult> {
 
     // Audit product pages
     const requiredProducts = ['upi', 'cash-loan', 'home-loan', 'health-insurance', 'mutual-funds'];
-    const existingProducts = productPages.map(p => p.fields.productType as string).filter(Boolean);
+    const existingProducts = productPages.map((p: any) => p.fields.productType as string).filter(Boolean);
     const missingProducts = requiredProducts.filter(product => !existingProducts.includes(product));
     
     missingProducts.forEach(product => {

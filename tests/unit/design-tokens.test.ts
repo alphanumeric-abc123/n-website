@@ -60,7 +60,7 @@ describe('Design Tokens', () => {
 
     it('should have consistent color structure', () => {
       // Primary and secondary should have full scale (50-950)
-      const expectedShades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+      const expectedShades = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950'] as const;
       expectedShades.forEach(shade => {
         expect(colors.primary[shade]).toBeDefined();
         expect(colors.secondary[shade]).toBeDefined();

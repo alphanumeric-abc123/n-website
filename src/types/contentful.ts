@@ -252,7 +252,7 @@ export interface HomePage {
   title: string;
   heroHeadline: string;
   heroSubtext: string;
-  heroImage: ContentfulAsset;
+  heroImage?: ContentfulAsset;
   heroCtaText: string;
   heroCtaLink: string;
   productOverview: ProductCard[];
