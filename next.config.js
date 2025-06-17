@@ -6,6 +6,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // GitHub Pages deployment configuration
+  basePath: process.env.NODE_ENV === 'production' ? '/n-website' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/n-website/' : '',
   // Optimize for static hosting
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
