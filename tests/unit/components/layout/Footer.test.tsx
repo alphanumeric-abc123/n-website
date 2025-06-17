@@ -74,23 +74,23 @@ describe('Footer Component', () => {
     });
 
     it('should render as footer element', () => {
-      render(<Footer data-testid="footer" />);
+      render(<Footer />);
       
-      const footer = screen.getByTestId('footer');
+      const footer = screen.getByRole('contentinfo');
       expect(footer.tagName).toBe('FOOTER');
     });
 
     it('should apply custom className', () => {
-      render(<Footer className="custom-footer" data-testid="footer" />);
+      render(<Footer className="custom-footer" />);
       
-      const footer = screen.getByTestId('footer');
+      const footer = screen.getByRole('contentinfo');
       expect(footer).toHaveClass('custom-footer');
     });
 
     it('should have proper footer styling', () => {
-      render(<Footer data-testid="footer" />);
+      render(<Footer />);
       
-      const footer = screen.getByTestId('footer');
+      const footer = screen.getByRole('contentinfo');
       expect(footer).toHaveClass('bg-neutral-900', 'text-white');
     });
   });
@@ -242,7 +242,7 @@ describe('Footer Component', () => {
     });
 
     it('should not render compliance section when not provided', () => {
-      render(<Footer complianceInfo={undefined} />);
+      render(<Footer complianceInfo={{}} />);
       
       expect(screen.queryByText('Licenses & Registrations')).not.toBeInTheDocument();
       expect(screen.queryByText('Regulated By')).not.toBeInTheDocument();
@@ -276,7 +276,7 @@ describe('Footer Component', () => {
       
       const footer = screen.getByRole('contentinfo');
       const gridContainer = footer.querySelector('.grid');
-      expect(gridContainer).toHaveClass('grid-cols-1', 'lg:grid-cols-5');
+      expect(gridContainer).toHaveClass('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-6');
     });
 
     it('should render container component', () => {

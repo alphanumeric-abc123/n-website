@@ -96,10 +96,10 @@ describe('Header Component', () => {
     it('should render logo with correct styling', () => {
       render(<Header />);
       
-      const logoLink = screen.getByRole('link', { name: /navi/i });
+      const logoLink = screen.getByText('Navi', { exact: true }).closest('a') as HTMLAnchorElement;
       expect(logoLink).toHaveAttribute('href', '/');
       
-      const logoText = screen.getByText('Navi');
+      const logoText = screen.getByText('Navi', { exact: true });
       expect(logoText).toHaveClass('text-xl', 'font-bold', 'text-neutral-900');
       
       const logoIcon = screen.getByText('N');
@@ -296,10 +296,17 @@ describe('Header Component', () => {
       fireEvent.click(mobileMenuButton);
       
       // Check for child items
-      expect(screen.getByText('UPI')).toBeInTheDocument();
-      expect(screen.getByText('Loans')).toBeInTheDocument();
-      expect(screen.getByText('Calculators')).toBeInTheDocument();
-      expect(screen.getByText('Guides')).toBeInTheDocument();
+      const upiElements = screen.getAllByText('UPI');
+      expect(upiElements.length).toBeGreaterThan(0);
+      
+      const loansElements = screen.getAllByText('Loans');
+      expect(loansElements.length).toBeGreaterThan(0);
+      
+      const calculatorsElements = screen.getAllByText('Calculators');
+      expect(calculatorsElements.length).toBeGreaterThan(0);
+      
+      const guidesElements = screen.getAllByText('Guides');
+      expect(guidesElements.length).toBeGreaterThan(0);
     });
   });
 

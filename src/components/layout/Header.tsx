@@ -47,10 +47,11 @@ const defaultNavigation: NavigationItem[] = [
   { label: 'Careers', href: '/careers' },
 ];
 
-const Header: React.FC<HeaderProps> = ({ 
-  navigation = defaultNavigation, 
+const Header: React.FC<HeaderProps & React.HTMLAttributes<HTMLElement>> = ({
+  navigation = defaultNavigation,
   className,
-  sticky = true 
+  sticky = true,
+  ...props
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -59,12 +60,13 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header 
+    <header
       className={cn(
         'bg-white border-b border-neutral-200 z-50',
         sticky && 'sticky top-0',
         className
       )}
+      {...props}
     >
       <Container size="xl" padding="md">
         <div className="flex items-center justify-between h-16">

@@ -1,5 +1,12 @@
 import '@testing-library/jest-dom'
 
+// Mock next/font/google used in layout.tsx
+jest.mock('next/font/google', () => ({
+  __esModule: true,
+  Inter: () => ({ className: '', variable: '' }),
+  JetBrains_Mono: () => ({ className: '', variable: '' }),
+}));
+
 // Mock Next.js router
 jest.mock('next/router', () => ({
   useRouter() {

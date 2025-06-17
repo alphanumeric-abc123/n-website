@@ -1,28 +1,205 @@
 # Page snapshot
 
 ```yaml
-- main:
-  - img "Next.js logo"
+- banner:
+  - link "N Navi":
+    - /url: /
+  - navigation:
+    - link "Products":
+      - /url: /products/
+      - text: Products
+      - img
+    - link "Why Navi":
+      - /url: /why-navi/
+    - link "About Us":
+      - /url: /about-us/
+    - link "Resources":
+      - /url: /resources/
+      - text: Resources
+      - img
+    - link "Careers":
+      - /url: /careers/
+  - button "Login"
+  - button "Download App"
+- heading "Financial Services Made Simple" [level=1]
+- paragraph: Get instant loans, comprehensive insurance, and smart investments - all in one app. Experience banking that works for you.
+- button "Download App"
+- button "Learn More"
+- heading "Trusted by Millions" [level=2]
+- paragraph: Join millions of Indians who trust Navi for their financial needs
+- text: 10M+ Happy Customers Trust Navi for their financial needs ₹50,000Cr+ Loans Disbursed In total loan amount 4.6★ App Rating Average rating on app stores 3 mins Processing Time Average loan approval time
+- paragraph: Our Products
+- heading "Everything You Need in One App" [level=2]
+- paragraph: From instant payments to long-term investments, Navi offers a complete suite of financial services designed for the modern Indian consumer.
+- img
+- heading "UPI Payments" [level=3]
+- paragraph: Send money instantly with zero charges
+- list:
+  - listitem:
+    - img
+    - text: Zero transaction fees
+  - listitem:
+    - img
+    - text: Instant transfers
+  - listitem:
+    - img
+    - text: 24/7 availability
+- button "Learn More"
+- img
+- heading "Personal Loans" [level=3]
+- paragraph: Get instant loans up to ₹20 lakhs
+- list:
+  - listitem:
+    - img
+    - text: Instant approval
+  - listitem:
+    - img
+    - text: Competitive rates
+  - listitem:
+    - img
+    - text: Flexible tenure
+- button "Learn More"
+- img
+- heading "Health Insurance" [level=3]
+- paragraph: Comprehensive health coverage for your family
+- list:
+  - listitem:
+    - img
+    - text: Cashless treatment
+  - listitem:
+    - img
+    - text: No waiting period
+  - listitem:
+    - img
+    - text: Family coverage
+- button "Learn More"
+- img
+- heading "Mutual Funds" [level=3]
+- paragraph: Smart investments with expert guidance
+- list:
+  - listitem:
+    - img
+    - text: Zero commission
+  - listitem:
+    - img
+    - text: Expert advice
+  - listitem:
+    - img
+    - text: SIP starting ₹100
+- button "Learn More"
+- button "Explore All Products"
+- paragraph: Our Promise
+- heading "Why Choose Navi?" [level=2]
+- paragraph: We're committed to making financial services simple, transparent, and accessible for everyone.
+- img
+- heading "Instant Approvals" [level=3]
+- paragraph: Get loan approvals in minutes, not days. Our AI-powered system ensures quick decisions.
+- img
+- heading "Zero Hidden Charges" [level=3]
+- paragraph: Complete transparency in pricing. What you see is what you pay, with no surprises.
+- img
+- heading "Digital First" [level=3]
+- paragraph: Everything from application to disbursement happens digitally. No paperwork, no branch visits.
+- img
+- heading "Ready to Experience Better Banking?" [level=2]
+- paragraph: Join millions of satisfied customers who have made the switch to Navi. Download our app today and discover the future of financial services.
+- button "Download App"
+- button "Learn More"
+- contentinfo:
+  - text: N Navi
+  - paragraph: Making financial services simple, transparent, and accessible for everyone.
+  - link "Twitter":
+    - /url: https://twitter.com/navi
+    - img
+  - link "LinkedIn":
+    - /url: https://linkedin.com/company/navi
+    - img
+  - link "Facebook":
+    - /url: https://facebook.com/navi
+    - img
+  - link "Instagram":
+    - /url: https://instagram.com/navi
+    - img
+  - heading "Products" [level=3]
   - list:
     - listitem:
-      - text: Get started by editing
-      - code: src/app/page.tsx
-      - text: .
-    - listitem: Save and see your changes instantly.
-  - link "Vercel logomark Deploy now":
-    - /url: https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app
-    - img "Vercel logomark"
-    - text: Deploy now
-  - link "Read our docs":
-    - /url: https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app
-- contentinfo:
-  - link "Learn":
-    - /url: https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app
-  - link "Examples":
-    - /url: https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app
-  - link "Go to nextjs.org →":
-    - /url: https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app
+      - link "UPI":
+        - /url: /products/upi/
+    - listitem:
+      - link "Cash Loan":
+        - /url: /products/cash-loan/
+    - listitem:
+      - link "Home Loan":
+        - /url: /products/home-loan/
+    - listitem:
+      - link "Health Insurance":
+        - /url: /products/health-insurance/
+    - listitem:
+      - link "Mutual Funds":
+        - /url: /products/mutual-funds/
+  - heading "Company" [level=3]
+  - list:
+    - listitem:
+      - link "About Us":
+        - /url: /about-us/
+    - listitem:
+      - link "Why Navi":
+        - /url: /why-navi/
+    - listitem:
+      - link "Careers":
+        - /url: /careers/
+    - listitem:
+      - link "Governance":
+        - /url: /governance/
+    - listitem:
+      - link "Contact Us":
+        - /url: /contact/
+  - heading "Resources" [level=3]
+  - list:
+    - listitem:
+      - link "Calculators":
+        - /url: /resources/calculators/
+    - listitem:
+      - link "Guides":
+        - /url: /resources/guides/
+    - listitem:
+      - link "Tools":
+        - /url: /resources/tools/
+    - listitem:
+      - link "Help Center":
+        - /url: /help/
+    - listitem:
+      - link "Blog":
+        - /url: /blog/
+  - heading "Legal" [level=3]
+  - list:
+    - listitem:
+      - link "Privacy Policy":
+        - /url: /privacy-policy/
+    - listitem:
+      - link "Terms of Service":
+        - /url: /terms-of-service/
+    - listitem:
+      - link "Cookie Policy":
+        - /url: /cookie-policy/
+    - listitem:
+      - link "Grievance Redressal":
+        - /url: /grievance-redressal/
+    - listitem:
+      - link "Fair Practice Code":
+        - /url: /fair-practice-code/
+  - heading "Licenses & Registrations" [level=4]
+  - list:
+    - listitem: "NBFC License: N-14.03268"
+    - listitem: "Insurance Broker License: IRDAI/DB797/19"
+    - listitem: "Investment Advisor: INA000015507"
+  - heading "Regulated By" [level=4]
+  - text: RBI IRDAI SEBI
+  - paragraph: Navi is a registered trademark. All financial products are subject to market risks. Please read all scheme related documents carefully.
+  - paragraph: © 2025 Navi. All rights reserved.
+  - paragraph: Navi Technologies Limited, Bangalore, India
+  - text: "Support:"
+  - link "support@navi.com":
+    - /url: mailto:support@navi.com
 - alert
-- button "Open Next.js Dev Tools":
-  - img
 ```
